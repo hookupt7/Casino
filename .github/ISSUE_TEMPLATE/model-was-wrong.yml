@@ -1,0 +1,37 @@
+name: Model was wrong
+description: A published probability, verdict, or calibration figure did not match the result.
+title: "[calibration] "
+labels: ["calibration"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Being wrong is expected. Hiding it is not. Include enough of the
+        evidence record that someone can re-score the verdict.
+  - type: input
+    id: fixture
+    attributes:
+      label: Fixture or market
+    validations:
+      required: true
+  - type: input
+    id: kickoff
+    attributes:
+      label: Kickoff (with timezone)
+  - type: textarea
+    id: verdict
+    attributes:
+      label: What the tool said
+      description: Probability, edge, gate decision, and the evidence IDs if you have them.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: What actually happened
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything the evidence floor should have caught

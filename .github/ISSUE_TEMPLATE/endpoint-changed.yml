@@ -1,0 +1,37 @@
+name: Endpoint changed
+description: A SportyBet API response, path, or contract no longer matches what we recorded.
+title: "[endpoint] "
+labels: ["endpoint-drift"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Endpoints move. A failed contract should become an issue, not a
+        silent wrong number on the page.
+  - type: input
+    id: path
+    attributes:
+      label: Path or method
+      placeholder: GET /api/ng/factsCenter/betType/config
+    validations:
+      required: true
+  - type: input
+    id: when
+    attributes:
+      label: When you observed it
+      placeholder: "2026-11-20, Africa/Lagos"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What the recorded contract said
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What came back
+      description: Redact cookies, tokens, and any account identifiers.
+    validations:
+      required: true

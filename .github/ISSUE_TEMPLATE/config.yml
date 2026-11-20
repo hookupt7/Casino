@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security report
+    url: https://github.com/hookupt7/Casino/security/advisories/new
+    about: Use a private advisory for a vulnerability. Do not file a public issue.

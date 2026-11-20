@@ -1,0 +1,44 @@
+name: Feature
+description: A change or addition that stays inside the project's scope.
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Phase 1 (the RTP + accumulator page) and Phase 2 (the analyst) are
+        the product. Anything else waits until those work. Please read
+        docs/ROADMAP.md and the "What not to build" list before proposing
+        a hosted service, credential collection, or a virtuals "pattern" model.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What is costly, unclear, or missing today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: The proposal
+      description: Be concrete. This project does not ship outcome promises.
+    validations:
+      required: true
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Earliest phase this belongs in
+      options:
+        - Phase 1 — RTP + accumulator page
+        - Phase 2 — analyst
+        - Phase 3 — journal and bankroll
+        - Phase 4 — MCP server
+        - Phase 5 — placement (only if it survives review)
+        - Docs or later
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Why this is not out of scope
+      description: Optional. Useful if the request is close to something we have already declined.

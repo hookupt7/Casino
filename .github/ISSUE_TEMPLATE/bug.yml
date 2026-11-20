@@ -1,0 +1,54 @@
+name: Bug
+description: Something in the tool is wrong, misleading, or broken.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting it. If a number on a page is wrong, that is a
+        bug even if the rest of the app works.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - RTP / accumulator page
+        - start.sh / install
+        - CI / linter
+        - Analyst / NO-BET gate
+        - Journal / bankroll
+        - MCP server
+        - Docs
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should have happened
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      placeholder: Commands, URLs, and any fixture or market involved.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: "0.1.0, or a commit SHA"
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Source URL, timestamp, screenshot, or log excerpt. Every claim in this project is supposed to be traceable.

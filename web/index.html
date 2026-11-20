@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SportyAgent — what a slip actually pays</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c0d10;
+      --fg: #e8e6e3;
+      --muted: #9a9893;
+      --line: #26272c;
+      --accent: #e8c56b;
+      --warn: #d4715b;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    body { padding: 1.25rem 1.25rem 4rem; }
+    main { max-width: 40rem; margin: 0 auto; }
+    header p { color: var(--muted); margin: 0 0 0.25rem; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .figure {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
+      font-size: clamp(4.5rem, 22vw, 8rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      font-weight: 650;
+      color: var(--warn);
+      margin: 0.2rem 0 0.6rem;
+    }
+    h1 { font-size: 1.35rem; font-weight: 600; margin: 0 0 0.75rem; }
+    p { margin: 0 0 1rem; }
+    .muted { color: var(--muted); }
+    table {
+      width: min(40rem, calc(100vw - 2.5rem));
+      border-collapse: collapse;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    th { color: var(--muted); font-weight: 500; font-size: 0.8rem; }
+    td.num, th.num { text-align: right; }
+    tr.low td { color: var(--warn); }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82em;
+      color: var(--accent);
+    }
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    a { color: var(--fg); }
+    ul { padding-left: 1.15rem; }
+    li { margin: 0.3rem 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p>SportyAgent · Phase 0</p>
+      <div class="figure">0.15×</div>
+      <h1>A 50-leg accumulator is paid at 0.15 of the advertised odds.</h1>
+    </header>
+    <p>
+      That multiplier is published by SportyBet at
+      <code>/api/ng/factsCenter/betType/config</code>.
+      It starts at 0.95 for two or three legs and falls to 0.15 at 47 legs and above.
+    </p>
+    <p class="muted">
+      Figures below were verified against the live API on 19–20 November 2026.
+      This page is static. Live fetch and a slip calculator arrive in Phase 1.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Legs</th>
+          <th class="num">Payout factor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>2–3</td><td class="num">0.95</td></tr>
+        <tr><td>4–5</td><td class="num">0.90</td></tr>
+        <tr><td>6–7</td><td class="num">0.85</td></tr>
+        <tr><td>8–10</td><td class="num">0.80</td></tr>
+        <tr><td>15–17</td><td class="num">0.65</td></tr>
+        <tr><td>23</td><td class="num">0.50</td></tr>
+        <tr><td>32</td><td class="num">0.30</td></tr>
+        <tr class="low"><td>47–50</td><td class="num">0.15</td></tr>
+      </tbody>
+    </table>
+
+    <p>Two other published facts belong on the same screen, once Phase 1 ships:</p>
+    <ul>
+      <li>
+        A 1.25× “odds boost” maps to an RTP band of <strong>0.00–0.50</strong>
+        at <code>/api/ng/marketing/v1/activities/oddsBoost/getOddsBoostLobRtpRatio</code>.
+        A boosted selection can pay nothing.
+      </li>
+      <li>
+        All 21 games in the lobby return <code>rtp: null</code>.
+        The field exists. It is not filled. Base market overround runs 7–9%.
+      </li>
+    </ul>
+
+    <p>
+      SportyAgent does not pick winners. It makes the cost of a slip visible.
+      Run this page locally with <code>./start.sh</code>. It binds
+      <code>127.0.0.1:3000</code> only.
+    </p>
+
+    <footer>
+      <p>18+ only. If betting has stopped being fun, stop. See the README for Nigerian support resources.</p>
+      <p>Created by Oanks. TikTok: <a href="https://www.tiktok.com/@oanksswag">@oanksswag</a></p>
+      <p>Not affiliated with SportyBet or its operators. MIT licensed. Research, not financial advice.</p>
+    </footer>
+  </main>
+</body>
+</html>
